@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Solar System</title>
+    <!-- Load A-Frame library -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <!-- Your custom JS -->
+    <script>
+      function switchCamera(camId) {
+        const cameras = ["cam1", "cam2"];
+        cameras.forEach((id) => {
+          const cam = document.getElementById(id);
+          if (id === camId) {
+            cam.setAttribute("camera", "active", true);
+            cam.setAttribute("visible", true);
+          } else {
+            cam.removeAttribute("camera");
+            cam.setAttribute("visible", false);
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Buttons should be outside the scene -->
+    <div style="position: absolute; top: 20px; left: 20px; z-index: 1">
+      <button onclick="switchCamera('cam1')">Front</button>
+      <button onclick="switchCamera('cam2')">Top</button>
+    </div>
+
+    <a-scene>
+      <!-- Default active camera -->
+      <a-camera
+        id="cam1"
+        position="0 2 10"
+        look-controls
+        wasd-controls
+      ></a-camera>
+
+      <!-- Top view -->
+      <a-camera
+        id="cam2"
+        position="0 20 0"
+        look-controls
+        wasd-controls
+      ></a-camera>
+
+      
+
+      <!-- Background Sky -->
+      <a-sky src="planet_textures/nightsky.jpg"></a-sky>
+
+      <!-- Sun -->
+      <a-sphere
+        id="sun"
+        position="-18 0 0"
+        radius="2"
+        src="planet_textures/sun.jpg"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 22224"
+      >
+      </a-sphere>
+
+      <!-- Mercury -->
+
+      <!-- Mercury orbiting around Sun -->
+<a-entity
+        position="-18 0 0"
+        rotation="0 0 0"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear"
+      >
+        <a-sphere
+          id="mercury"
+          position="6 0 0"
+          radius="0.15"
+          src="planet_textures/mercury.jpeg"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 30000;easing: linear"
+        ></a-sphere>
+        </a-entity>
+
+      <!-- Mercury Orbit Ring -->
+      <a-torus
+        color="#999"
+        radius="6"
+        radius-tubular="0.01"
+        rotation="90 0 0"
+        position="-18 0 0"
+      ></a-torus>
+
+      <!-- Venus -->
+      <a-entity
+        position="-18 0 0"
+        rotation="0 0 0"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 76700  ;easing: linear"
+      >
+        <a-sphere
+          id="venus"
+          position="-7 0 0"
+          radius="0.3"
+          src="planet_textures/venus.jpeg"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 76700  ;easing: linear"
+        >
+        </a-sphere>
+      </a-entity>
+
+            <!-- Venus orbiting around Sun -->
+      <a-torus
+        color="#ccc"
+        radius="7"
+        radius-tubular="0.01"
+        rotation="90 0 0"
+        position="-18 0 0"
+      ></a-torus>
+
+      <!-- Earth -->
+<a-entity
+        position="-18 0 0"
+        rotation="0 0 0"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 125000  ;easing: linear"
+      >
+        <a-sphere
+          id="earth"
+          position="10 0 0"
+          radius="0.4"
+          src="planet_textures/earth.jpeg"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 125000  ;easing: linear"
+        >
+      </a-sphere>
+      </a-entity>
+
+      <!-- Earth orbiting around Sun -->
+      <a-torus
+        color="#ccc"
+        radius="10"
+        radius-tubular="0.01"
+        rotation="90 0 0"
+        position="-18 0 0"
+      ></a-torus>
+
+     
+      <!-- Mars -->
+<a-entity
+        position="-18 0 0"
+        rotation="0 0 0"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 235000 ;easing: linear"
+      >
+      <a-sphere
+        id="mars"
+        position="14 0 0"
+        radius="0.25"
+        src="planet_textures/mars.jpeg"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 235000 ;easing: linear"
+      >
+      </a-sphere>
+      </a-entity>
+
+      <!-- Mars orbiting around Sun -->
+      <a-torus
+        color="#f44"
+        radius="14"
+        radius-tubular="0.01"
+        rotation="90 0 0"
+        position="-18 0 0"
+      ></a-torus> 
+
+      <!-- Jupiter -->
+<a-entity
+        position="-18 0 0"
+        rotation="0 0 0"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 1470000 ;easing: linear"
+      >
+      <a-sphere
+        id="jupiter"
+        position="20 0 0"
+        radius="0.8"
+        src="planet_textures/jupiter.jpeg"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 1470000 ;easing: linear"
+      >
+      </a-sphere>
+      </a-entity>
+
+      <!-- Jupiter orbiting around Sun -->
+      <a-torus
+        color="#fa4"
+        radius="20"
+        radius-tubular="0.01"
+        rotation="90 0 0"
+        position="-18 0 0"
+      ></a-torus> 
+
+      <!-- Saturn -->
+<a-entity  
+       position="-18 0 0"
+       rotation="0 0 0"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 3650000 ;easing: linear"
+      >
+      <a-sphere
+        id="saturn"
+        position="23 0 0"
+        radius="0.6"
+        src="planet_textures/saturn.jpeg"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 3650000 ;easing: linear"
+      >
+      </a-sphere>
+      </a-entity>
+      
+      <!-- Saturn orbiting around Sun -->
+      <a-torus
+        color="#ff8"
+        radius="23"
+        radius-tubular="0.01"
+        rotation="90 0 0"
+        position="-18 0 0"
+      ></a-torus> 
+
+      <!-- Uranus -->
+<a-entity
+        position="-18 0 0"
+        rotation="0 0 0"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10400000 ;easing: linear"
+      >
+      <a-sphere
+        id="uranus"
+        position="27 0 0"
+        radius="0.5"
+        src="planet_textures/uranus.jpeg"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10400000 ;easing: linear"
+      >
+      </a-sphere>
+      </a-entity>
+            
+      <!-- Uranus orbiting around Sun -->
+      <a-torus
+        color="#aff"
+        radius="27"
+        radius-tubular="0.01"
+        rotation="90 0 0"
+        position="-18 0 0"
+      ></a-torus> 
+
+      <!-- Neptune -->
+<a-entity
+        position="-18 0 0"
+        rotation="0 0 0"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 20400000 ;easing: linear"
+      >
+      <a-sphere
+        id="neptune"
+        position="32 0 0"
+        radius="0.5"
+        src="planet_textures/neptune.jpeg"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 20400000 ;easing: linear"
+      >
+      </a-sphere>
+      </a-entity>
+            
+      <!-- Neptune orbiting around Sun -->
+      <a-torus
+        color="#88f"
+        radius="32"
+        radius-tubular="0.01"
+        rotation="90 0 0"
+        position="-18 0 0"
+      ></a-torus> 
+    </a-scene>
+  </body>
+</html>
